@@ -5,7 +5,7 @@ from app.matcher import extract_skills, rank_jobs
 
 class SkillExtractionTests(unittest.TestCase):
     def test_detects_aliases_as_canonical_skills(self):
-        skills = extract_skills("Built dashboards in PowerBI and analysed data with Python3.")
+        skills = extract_skills("Built dashboards in PowerBI and performed data analysis with Python3.")
         self.assertIn("power bi", skills)
         self.assertIn("data analysis", skills)
         self.assertIn("python", skills)
