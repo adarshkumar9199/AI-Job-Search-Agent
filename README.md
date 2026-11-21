@@ -107,3 +107,11 @@ The API processes the uploaded resume in memory and does not save it to disk. Us
 Email: [adarsh.kumar919976@gmail.com](mailto:adarsh.kumar919976@gmail.com)
 
 *Developed as a learning project with AI assistance. The author should review, run, test, and understand the implementation before presenting it as their own work.*
+
+## Project walkthrough
+
+See [PROJECT_WALKTHROUGH.md](PROJECT_WALKTHROUGH.md) for the architecture, scoring explanation, honest limitations, macOS setup steps, resume bullet, and interview preparation questions.
+
+## Continuous integration
+
+GitHub Actions runs the unit tests and Python syntax checks on pushes and pull requests. Check the [Actions tab](https://github.com/adarshkumar9199/AI-Job-Search-Agent/actions) for the latest result.
