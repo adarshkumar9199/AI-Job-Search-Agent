@@ -83,3 +83,10 @@ This repository is an independent learning implementation based on the general i
 ## Privacy
 
 Use sample resumes while testing. Do not upload sensitive personal information to an untrusted deployment. This local MVP does not persist uploaded resume files.
+
+## Author
+
+**Adarsh Kumar**  
+Email: [adarsh.kumar919976@gmail.com](mailto:adarsh.kumar919976@gmail.com)
+
+*This project was developed with AI assistance as part of a learning project.*
