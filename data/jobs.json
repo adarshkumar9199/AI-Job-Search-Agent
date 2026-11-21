@@ -5,7 +5,8 @@
     "company": "Sample Analytics Co.",
     "location": "Remote",
     "description": "Analyze business data, prepare reports and dashboards, and communicate insights to stakeholders using SQL, Excel and Power BI.",
-    "required_skills": ["sql", "excel", "power bi", "data analysis", "communication"]
+    "required_skills": ["sql", "excel", "power bi", "data analysis", "communication"],
+    "preferred_skills": ["tableau", "statistics"]
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "company": "Demo Software Labs",
     "location": "Bengaluru",
     "description": "Build and maintain backend APIs using Python, FastAPI and SQL. Work with application teams and document services.",
-    "required_skills": ["python", "fastapi", "sql", "communication"]
+    "required_skills": ["python", "fastapi", "sql", "communication"],
+    "preferred_skills": ["flask"]
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "company": "Example Process Industries",
     "location": "Raipur",
     "description": "Support process calculations, equipment performance monitoring and plant improvement activities using chemical engineering fundamentals.",
-    "required_skills": ["chemical engineering", "mass transfer", "heat transfer", "fluid mechanics", "process simulation"]
+    "required_skills": ["chemical engineering", "mass transfer", "heat transfer", "fluid mechanics", "process simulation"],
+    "preferred_skills": ["matlab", "autocad"]
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "company": "Sample Business Solutions",
     "location": "Remote",
     "description": "Translate business requirements into analysis, manage project tasks, work with Excel and SQL, and present findings.",
-    "required_skills": ["excel", "sql", "data analysis", "project management", "communication"]
+    "required_skills": ["excel", "sql", "data analysis", "project management", "communication"],
+    "preferred_skills": ["power bi", "tableau"]
   },
   {
     "id": 5,
@@ -37,6 +41,7 @@
     "company": "Demo Digital Studio",
     "location": "Pune",
     "description": "Create responsive web interfaces using HTML, CSS, JavaScript and React. Collaborate with backend developers.",
-    "required_skills": ["html", "css", "javascript", "react", "communication"]
+    "required_skills": ["html", "css", "javascript", "react", "communication"],
+    "preferred_skills": []
   }
 ]
