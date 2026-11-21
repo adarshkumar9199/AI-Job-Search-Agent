@@ -1,33 +1,38 @@
 # AI Job Search Assistant
 
-A resume-based job matching API built with Python and FastAPI. Upload a PDF resume, optionally select a role and location, and receive a ranked list of matching jobs with matched and missing skills.
+A resume-based job matching API built with Python and FastAPI. Upload a PDF resume, inspect extracted skills, and receive ranked sample jobs with a transparent explanation of each score.
 
-> **Project status:** Initial MVP using a small local demo job dataset. It does not fetch live vacancies. Matching is based on skill overlap and keyword similarity, not a trained AI model or semantic embeddings.
+> **Project status:** Learning MVP. It uses a local sample-job dataset and rule-based matching. It does not fetch live vacancies, use a trained language model, or predict hiring outcomes.
 
 ## Features
 
-- Extract text from PDF resumes using pypdf.
-- Identify skills from a configurable skill list.
-- Rank demo job listings using a transparent weighted score.
-- Show matched and missing skills for each result.
-- Filter by role and location.
-- Explore API endpoints through FastAPI Swagger docs.
+- Extract selectable text from PDF resumes with pypdf.
+- Detect canonical skills using a small alias dictionary (for example, PowerBI → Power BI).
+- Preview extracted skills before job matching.
+- Rank jobs using required skills, preferred skills, and job-description keyword overlap.
+- Explain each result with matched/missing skills, score breakdown, and match category.
+- Filter sample jobs by role and location.
+- Validate file type, file size, page count, encrypted PDFs, and empty/scanned PDFs.
+- Run automated unit tests for extraction and ranking logic.
 
-## How matching works
+## Matching approach
 
-For each job:
-- Skill score = matched required skills / total required skills.
-- Keyword score = overlap between resume terms and job-description terms.
-- Overall score = 70% skill score + 30% keyword score.
+This is an explainable baseline, not semantic AI.
 
-This is a simple baseline recommender. Scores are indicative and should not be treated as a hiring decision.
+1. **Required skill coverage** = matched required skills / total required skills.
+2. **Preferred skill coverage** = matched preferred skills / total preferred skills.
+3. **Skill score** = 80% required coverage + 20% preferred coverage.
+4. **Keyword score** = overlap between resume terms and job title/description terms, divided by job terms.
+5. **Overall match score** = 75% skill score + 25% keyword score.
+
+The API also returns matched and missing required skills, matched preferred skills, and a simple match category. A score is a heuristic ranking signal, not a probability of getting hired.
 
 ## Tech stack
 
 - Python
-- FastAPI
-- Uvicorn
+- FastAPI and Uvicorn
 - pypdf
+- unittest (Python standard library)
 
 ## Project structure
 
@@ -39,6 +44,8 @@ AI-Job-Search-Agent/
 │   └── matcher.py
 ├── data/
 │   └── jobs.json
+├── tests/
+│   └── test_matcher.py
 ├── .gitignore
 ├── requirements.txt
 └── README.md
@@ -53,40 +60,50 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-Open http://127.0.0.1:8000/docs to try the API.
+Open http://127.0.0.1:8000/docs for interactive API documentation.
 
-## API
+## Run tests
 
-- `GET /` — service information
+From the repository root:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+## API endpoints
+
+- `GET /` — service information and version
 - `GET /health` — health check
-- `GET /api/jobs` — list demo jobs
-- `POST /api/jobs/search` — upload a PDF resume and get ranked matches
+- `GET /api/jobs` — list sample jobs
+- `POST /api/resume/skills` — upload a PDF and preview detected skills
+- `POST /api/jobs/search` — upload a PDF and retrieve ranked sample jobs
 
-For `POST /api/jobs/search`, use multipart form data:
+For the search endpoint, send multipart form data:
 - `resume` (required): PDF file
-- `role` (optional): role keyword, e.g. Data Analyst
-- `location` (optional): location keyword, default is Remote
-- `limit` (optional): number of results, default is 5
+- `role` (optional): title filter, e.g. Data Analyst
+- `location` (optional): location filter; Remote listings remain eligible
+- `limit` (optional): 1–20, default 5
 
 ## Limitations and next steps
 
-- The bundled job listings are sample data, not current vacancies.
-- Scanned/image-only PDFs may not yield extractable text.
-- Skill extraction uses a fixed vocabulary and can miss synonyms or context.
-- Keyword overlap is not true semantic understanding.
-- Future work: connect a permitted live job data provider, add tests, improve skill taxonomy, and evaluate ranking on a human-reviewed dataset.
+- The five bundled job records are illustrative sample data, not current vacancies.
+- Skill extraction uses a manually maintained vocabulary and can miss context, synonyms, and equivalent experience.
+- Keyword overlap is not semantic understanding.
+- Scanned PDFs require OCR, which is not included.
+- No persistent database, authentication, live job provider, or deployment pipeline is included.
+- Next: add a larger reviewed dataset, evaluate ranking with Precision@K/Recall@K, expand tests, and integrate a permitted live job source.
 
 ## Attribution
 
-This repository is an independent learning implementation based on the general idea of resume-based job discovery. It is not a fork and does not contain copied source files from [Software566/ai-job-search-agent](https://github.com/Software566/ai-job-search-agent). The referenced project provided inspiration for the problem statement; all code in this repository is newly written for this MVP.
+This is an independent learning implementation of a resume-to-job matching idea. It is not a fork and does not contain copied source files from [Software566/ai-job-search-agent](https://github.com/Software566/ai-job-search-agent). The referenced repository inspired the problem statement.
 
 ## Privacy
 
-Use sample resumes while testing. Do not upload sensitive personal information to an untrusted deployment. This local MVP does not persist uploaded resume files.
+The API processes the uploaded resume in memory and does not save it to disk. Use sample resumes while testing and avoid deploying with real personal data until appropriate security controls are added.
 
 ## Author
 
 **Adarsh Kumar**  
 Email: [adarsh.kumar919976@gmail.com](mailto:adarsh.kumar919976@gmail.com)
 
-*This project was developed with AI assistance as part of a learning project.*
+*Developed as a learning project with AI assistance. The author should review, run, test, and understand the implementation before presenting it as their own work.*
