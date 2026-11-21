@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Junior Data Analyst",
+    "company": "Sample Analytics Co.",
+    "location": "Remote",
+    "description": "Analyze business data, prepare reports and dashboards, and communicate insights to stakeholders using SQL, Excel and Power BI.",
+    "required_skills": ["sql", "excel", "power bi", "data analysis", "communication"]
+  },
+  {
+    "id": 2,
+    "title": "Python Backend Developer",
+    "company": "Demo Software Labs",
+    "location": "Bengaluru",
+    "description": "Build and maintain backend APIs using Python, FastAPI and SQL. Work with application teams and document services.",
+    "required_skills": ["python", "fastapi", "sql", "communication"]
+  },
+  {
+    "id": 3,
+    "title": "Process Engineer",
+    "company": "Example Process Industries",
+    "location": "Raipur",
+    "description": "Support process calculations, equipment performance monitoring and plant improvement activities using chemical engineering fundamentals.",
+    "required_skills": ["chemical engineering", "mass transfer", "heat transfer", "fluid mechanics", "process simulation"]
+  },
+  {
+    "id": 4,
+    "title": "Business Analyst",
+    "company": "Sample Business Solutions",
+    "location": "Remote",
+    "description": "Translate business requirements into analysis, manage project tasks, work with Excel and SQL, and present findings.",
+    "required_skills": ["excel", "sql", "data analysis", "project management", "communication"]
+  },
+  {
+    "id": 5,
+    "title": "Frontend Developer",
+    "company": "Demo Digital Studio",
+    "location": "Pune",
+    "description": "Create responsive web interfaces using HTML, CSS, JavaScript and React. Collaborate with backend developers.",
+    "required_skills": ["html", "css", "javascript", "react", "communication"]
+  }
+]
